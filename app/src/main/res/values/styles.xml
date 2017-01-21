@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="TextInputLayout.TextAppearance.HintGray" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColorHint">@color/gray100</item>
+        <item name="android:textColor">@color/gray200</item>
+    </style>
+
+    <style name="TextInputLayout.TextAppearance.ErrorWhite" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="AppCompatEditText.TextAppearanceWhite" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/gray100</item>
+    </style>
+
+    <style name="AppCompatEditTextWhite">
+        <item name="colorControlNormal">@color/gray400</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="android:textAppearance">@style/AppCompatEditText.TextAppearanceWhite</item>
+        <item name="android:textColor">@color/gray100</item>
+        <item name="android:textColorHint">@color/gray100</item>
+    </style>
+
+
+</resources>

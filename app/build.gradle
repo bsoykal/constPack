@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+def AAVersion = '4.1.0'
+def RETROFIT_VERSION = '2.1.0'
+def LOMBOK_VERSION = '1.16.12'
+def PARCELER_VERSION = '1.1.5'
+def SUPPORT_VERSION = "25.0.1"
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.mobile.constpack"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug{
+            buildConfigField("String", "BASEURL", "\"http://www.emrhgnc.com/api/\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            buildConfigField("String", "BASEURL", "\"http://www.emrhgnc.com/api/\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+    compile "com.android.support:design:$SUPPORT_VERSION"
+    testCompile 'junit:junit:4.12'
+
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+
+    provided "org.projectlombok:lombok:$LOMBOK_VERSION"
+    apt "org.projectlombok:lombok:$LOMBOK_VERSION"
+
+    compile 'com.google.code.gson:gson:2.7'
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+
+    compile "org.parceler:parceler-api:$PARCELER_VERSION"
+}
