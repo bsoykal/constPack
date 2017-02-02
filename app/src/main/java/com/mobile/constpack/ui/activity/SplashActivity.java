@@ -1,17 +1,16 @@
-package com.mobile.constpack;
+package com.mobile.constpack.ui.activity;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 
-import org.androidannotations.annotations.AfterViews;
+import com.mobile.constpack.R;
 import org.androidannotations.annotations.EActivity;
 
 @EActivity(R.layout.activity_splash)
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
-    @AfterViews
-    void initViews() {
+    @Override
+    public void initViews() {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

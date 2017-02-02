@@ -1,24 +1,23 @@
-package com.mobile.constpack;
+package com.mobile.constpack.ui.activity;
 
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.widget.Toast;
 
+import com.mobile.constpack.R;
 import com.mobile.constpack.helpers.StringUtils;
 import com.mobile.constpack.network.BaseCallback;
 import com.mobile.constpack.network.RestManager;
 import com.mobile.constpack.network.request.LoginRequest;
 import com.mobile.constpack.network.response.LoginResponse;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_login)
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @ViewById(R.id.txtinp_user_name)
     TextInputLayout txt_inp_username;
@@ -32,8 +31,10 @@ public class LoginActivity extends AppCompatActivity {
     @ViewById(R.id.appedt_pass)
     AppCompatEditText appet_pass;
 
-    @AfterViews
-    void initViews(){
+    @Override
+    public void initViews() {
+        appet_username.setText("emrahgenc@outlook.com");
+        appet_pass.setText("123");
 
     }
 
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         RestManager.getInstance().requestLogin(new LoginRequest(appet_username.getText().toString(),appet_pass.getText().toString())).enqueue(new BaseCallback<LoginResponse>(this) {
             @Override
             public void onSuccess(LoginResponse response) {
-                Toast.makeText(LoginActivity.this,"Login Success",Toast.LENGTH_SHORT).show();
+                DashBoardActivity_.intent(LoginActivity.this).start();
             }
 
             @Override
@@ -83,4 +84,6 @@ public class LoginActivity extends AppCompatActivity {
         txt_inp_pass.setError(null);
         txt_inp_pass.setErrorEnabled(true);
     }
+
+
 }

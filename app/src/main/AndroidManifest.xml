@@ -11,15 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity_"
-            android:label="@string/app_name">
+            android:name=".ui.activity.SplashActivity_"
+            android:label="@string/app_name"
+            android:screenOrientation="userPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity_" />
+
+        <activity android:name=".ui.activity.LoginActivity_"
+            android:screenOrientation="userPortrait"/>
+
+        <activity android:name=".ui.activity.DashBoardActivity_"
+            android:screenOrientation="userPortrait"/>
 
     </application>
 
