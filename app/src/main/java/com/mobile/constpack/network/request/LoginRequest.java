@@ -9,12 +9,12 @@ import lombok.Data;
 
 @Data
 public class LoginRequest {
-    String strEposta;
-    String strPassword;
+    String eposta;
+    String password;
 
     public LoginRequest(String strEposta, String strPassword){
-        setStrEposta(strEposta);
-        setStrPassword(strPassword);
+        setEposta(strEposta);
+        setPassword(strPassword);
     }
 
 

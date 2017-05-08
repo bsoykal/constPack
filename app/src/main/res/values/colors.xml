@@ -3,6 +3,7 @@
 
     <color name="ripple">#60414141</color>
     <color name="white">#FFFFFF</color>
+    <color name="white_blue">#f4f7fd</color>
 
     <color name="gray100">#f7f6f6</color>
     <color name="gray200">#e9e7e7</color>
@@ -20,7 +21,11 @@
 
     <color name="green">#86ea80</color>
 
-    <color name="colorPrimary">@color/blue100</color>
+    <color name="colorPrimary">@color/blue300</color>
     <color name="colorPrimaryDark">@color/blue200</color>
-    <color name="colorAccent">@color/blue</color>
+    <color name="colorAccent">@color/blue300</color>
+
+    <color name="job_done">#e5fdf6</color>
+    <color name="job_late">#ffacad</color>
+
 </resources>

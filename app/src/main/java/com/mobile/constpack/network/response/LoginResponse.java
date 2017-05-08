@@ -1,5 +1,8 @@
 package com.mobile.constpack.network.response;
 
+import com.google.gson.annotations.SerializedName;
+import com.mobile.constpack.network.domain.User;
+
 import org.parceler.Parcel;
 import org.parceler.ParcelConstructor;
 
@@ -15,20 +18,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class LoginResponse extends BaseResponse {
 
-
-    int intKullaniciId;
-    String strKullaniciAdi;
-    String strUnvan;
-    int intRol;
-    String strEposta;
-    String dtSonGiriş;
-    boolean blOturum;
-    boolean blDurum;
-    String strPassword;
-
+    @SerializedName("data")
+    User user;
 
     @ParcelConstructor
     public LoginResponse(){
     }
 }
-

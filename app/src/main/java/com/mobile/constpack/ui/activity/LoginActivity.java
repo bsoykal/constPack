@@ -5,12 +5,14 @@ import android.support.v7.widget.AppCompatEditText;
 import android.widget.Toast;
 
 import com.mobile.constpack.R;
+import com.mobile.constpack.base.ConstPack;
 import com.mobile.constpack.helpers.StringUtils;
 import com.mobile.constpack.network.BaseCallback;
 import com.mobile.constpack.network.RestManager;
 import com.mobile.constpack.network.request.LoginRequest;
 import com.mobile.constpack.network.response.LoginResponse;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.TextChange;
@@ -31,7 +33,7 @@ public class LoginActivity extends BaseActivity {
     @ViewById(R.id.appedt_pass)
     AppCompatEditText appet_pass;
 
-    @Override
+    @AfterViews
     public void initViews() {
         appet_username.setText("emrahgenc@outlook.com");
         appet_pass.setText("123");
@@ -41,15 +43,18 @@ public class LoginActivity extends BaseActivity {
     @Click(R.id.appbtn_login)
     void login(){
         if(!isValid()) return;
-
+        showLoadingDialog();
         RestManager.getInstance().requestLogin(new LoginRequest(appet_username.getText().toString(),appet_pass.getText().toString())).enqueue(new BaseCallback<LoginResponse>(this) {
             @Override
             public void onSuccess(LoginResponse response) {
-                DashBoardActivity_.intent(LoginActivity.this).start();
+                dismissLoadingDialog();
+                ConstPack.get().setUserId(response.getUser().getKullaniciId());
+                DashBoardController_.intent(LoginActivity.this).start();
             }
 
             @Override
             public void onFailure(int errorId,String error) {
+                dismissLoadingDialog();
                 Toast.makeText(LoginActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
             }
         });

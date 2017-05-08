@@ -20,4 +20,10 @@
     <string name="constTitle">ConstPack</string>
     <string name="txt_err_empty_username">Lütfen kullanıcı adınızı giriniz</string>
     <string name="txt_err_empty_pass">Lütfen şifrenizi giriniz</string>
+    <string name="project_list_toolbar_title">PROJELER</string>
+    <string name="block_list_toolbar_title">BLOKLAR</string>
+    <string name="floor_list_toolbar_title">KATLAR</string>
+    <string name="product_list_toolbar_title">ÜRÜNLER</string>
+    <string name="mahal_list_toolbar_title">MAHALLER</string>
+
 </resources>

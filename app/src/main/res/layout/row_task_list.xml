@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+   >
+
+    <android.support.v7.widget.CardView
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_background"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="30dp"
+           >
+
+            <RelativeLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/job_title_label"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="İŞ TANIMI : "
+                    android:textColor="@color/blue300"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/job_title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/job_title_label"
+                    android:layout_toEndOf="@+id/job_title_label"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    tools:text="Duvar Kırılması"
+                    android:textSize="15sp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/prime_title_label"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="SORUMLU : "
+                    android:textStyle="bold"
+                    android:textColor="@color/blue300"
+                    android:textSize="15sp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/prime_title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/prime_title_label"
+                    android:layout_toEndOf="@+id/prime_title_label"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    tools:text="Ahmet Usta"
+                    android:textSize="15sp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/count_title_label"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="MİKTAR :  "
+                    android:textStyle="bold"
+                    android:textColor="@color/blue300"
+                    android:textSize="15sp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/count_title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/count_title_label"
+                    android:layout_toEndOf="@+id/count_title_label"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    tools:text="10"
+                    android:textSize="15sp"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>

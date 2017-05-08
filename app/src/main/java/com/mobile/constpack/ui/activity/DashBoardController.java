@@ -5,15 +5,12 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.FragmentManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.widget.AppCompatImageView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.mobile.constpack.R;
-import com.mobile.constpack.ui.fragment.BaseFragment;
 import com.mobile.constpack.ui.fragment.HomeFragment;
 import com.mobile.constpack.ui.fragment.HomeFragment_;
 import com.mobile.constpack.ui.fragment.ProfileFragment;
@@ -22,7 +19,6 @@ import com.mobile.constpack.ui.fragment.QRCodeFragment;
 import com.mobile.constpack.ui.fragment.QRCodeFragment_;
 
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.SystemService;
 import org.androidannotations.annotations.ViewById;
 
 /**
@@ -30,7 +26,7 @@ import org.androidannotations.annotations.ViewById;
  */
 
 @EActivity(R.layout.activity_dashboard)
-public class DashBoardActivity extends BaseActivity {
+public class DashBoardController extends BaseController {
 
     FragmentManager fragmentManager;
 
@@ -63,34 +59,8 @@ public class DashBoardActivity extends BaseActivity {
 
 
     @Override
-    public void initViews() {
-        fragmentManager = getFragmentManager();
-        addFragmentToStack(HomeFragment_.builder().build(),false);
+    public void createViews() {
         setupTabIcons();
-
-    }
-
-   public void addFragmentToStack(BaseFragment fragment,boolean popBefore){
-
-        if(popBefore && fragmentManager.getBackStackEntryCount()!=0)fragmentManager.popBackStack();
-       fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).addToBackStack(fragment.getTag()).commit();
-   }
-
-    public void removeAllFromStack(){
-        if (fragmentManager.getBackStackEntryCount()>0){
-            do{
-                fragmentManager.popBackStack();
-            }while (fragmentManager.getBackStackEntryCount()!=0);
-        }
-    }
-
-    @Override
-    public void onBackPressed(){
-        if(fragmentManager.getBackStackEntryCount()==1){
-            finish();
-        }else{
-            super.onBackPressed();
-        }
     }
 
     private void setupTabIcons() {
@@ -153,7 +123,7 @@ public class DashBoardActivity extends BaseActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                Toast.makeText(DashBoardActivity.this,"RePosition :: "+tab.getPosition(),Toast.LENGTH_LONG).show();
+                Toast.makeText(DashBoardController.this,"RePosition :: "+tab.getPosition(),Toast.LENGTH_LONG).show();
             }
         });
 
@@ -168,17 +138,14 @@ public class DashBoardActivity extends BaseActivity {
 
     public static void animateViewVisibility(final View view, final int visibility)
     {
-        // cancel runnning animations and remove and listeners
         view.animate().cancel();
         view.animate().setListener(null);
 
-        // animate making view visible
         if (visibility == View.VISIBLE)
         {
             view.animate().alpha(1f).start();
             view.setVisibility(View.VISIBLE);
         }
-        // animate making view hidden (HIDDEN or INVISIBLE)
         else
         {
             view.animate().setListener(new AnimatorListenerAdapter()

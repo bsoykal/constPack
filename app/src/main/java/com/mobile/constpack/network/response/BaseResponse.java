@@ -17,6 +17,7 @@ public class BaseResponse {
     int errorId;
     String errorMsg;
 
+
     @ParcelConstructor
     public BaseResponse() {
     }
