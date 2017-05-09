@@ -25,5 +25,18 @@
     <string name="floor_list_toolbar_title">KATLAR</string>
     <string name="product_list_toolbar_title">ÜRÜNLER</string>
     <string name="mahal_list_toolbar_title">MAHALLER</string>
+    <string name="ok">Tamam</string>
+    <string name="permission_camera_rationale">QR Kodun okunması için izin vermelisiniz.</string>
+    <string name="low_storage_error">Saklama yeriniz az!!</string>
+    <string name="no_camera_permission">Kamera izniniz bulunmamaktadır.</string>
+    <string name="error_title">Hata</string>
+    <string name="qr_detector_low_storage_error">QR okumak için yeterli depolama alanı bulunmamaktadır.</string>
+    <string name="dialog_ok">Tamam</string>
+    <string name="dialog_yes">Evet</string>
+    <string name="dialog_cancel">İptal</string>
+    <string name="dialog_no">Hayır</string>
+    <string name="qr_info_message">Lütfen QR kodunu okutun</string>
+    <string name="ok_button">Tamam</string>
+    <string name="invalid_qr_msg">Geçersiz QR Kodu</string>
 
 </resources>

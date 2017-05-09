@@ -1,5 +1,6 @@
 package com.mobile.constpack.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
@@ -55,72 +56,82 @@ public class TaskController extends BaseActivity {
 
     @AfterViews
     public void initViews() {
-         creator = new SwipeMenuCreator() {
 
-            @Override
-            public void create(SwipeMenu menu) {
+        if(isEditable){
+            creator = new SwipeMenuCreator() {
 
-                Display display = getWindowManager().getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
-                int width = size.x;
-                int height = size.y;
+                @Override
+                public void create(SwipeMenu menu) {
 
-                SwipeMenuItem openItem = new SwipeMenuItem(
-                        getApplicationContext());
+                    Display display = getWindowManager().getDefaultDisplay();
+                    Point size = new Point();
+                    display.getSize(size);
+                    int width = size.x;
+                    int height = size.y;
 
-                openItem.setBackground(new ColorDrawable(ContextCompat.getColor(TaskController.this,R.color.blue300)));
+                    SwipeMenuItem openItem = new SwipeMenuItem(
+                            getApplicationContext());
+
+                    openItem.setBackground(new ColorDrawable(ContextCompat.getColor(TaskController.this,R.color.blue300)));
 
 
-                switch (menu.getViewType()) {
-                    case 0:
-                        openItem.setIcon(ContextCompat.getDrawable(TaskController.this,R.drawable.ic_done_white));
-                        break;
-                    case 1:
-                        openItem.setIcon(ContextCompat.getDrawable(TaskController.this,R.drawable.ic_cancel_white));
-                        break;
+                    switch (menu.getViewType()) {
+                        case 0:
+                            openItem.setIcon(ContextCompat.getDrawable(TaskController.this,R.drawable.ic_done_white));
+                            break;
+                        case 1:
+                            openItem.setIcon(ContextCompat.getDrawable(TaskController.this,R.drawable.ic_cancel_white));
+                            break;
 
+                    }
+
+                    openItem.setWidth(width/4);
+                    menu.addMenuItem(openItem);
                 }
+            };
 
-                openItem.setWidth(width/4);
-                menu.addMenuItem(openItem);
-            }
-        };
+            swipeMenuListView.setMenuCreator(creator);
+            swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(final int position, final SwipeMenu menu, int index) {
+                    showLoadingDialog();
+                    RestManager.getInstance().requestUpdateTask(new UpdateTaskRequest(tasks[position].getId(),menu.getViewType()==0)).enqueue(new BaseCallback<BaseResponse>(TaskController.this) {
+                        @Override
+                        public void onSuccess(BaseResponse response) {
+                            dismissLoadingDialog();
+                            tasks[position].setTamamlandi(menu.getViewType()==0);
+                            taskListAdapter.setTasks(tasks);
+                            taskListAdapter.notifyDataSetChanged();
+                            swipeMenuListView.performClick();
+                        }
 
-// set creator
-        swipeMenuListView.setMenuCreator(creator);
-        swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(final int position, final SwipeMenu menu, int index) {
-                showLoadingDialog();
-                RestManager.getInstance().requestUpdateTask(new UpdateTaskRequest(tasks[position].getId(),menu.getViewType()==0)).enqueue(new BaseCallback<BaseResponse>(TaskController.this) {
-                    @Override
-                    public void onSuccess(BaseResponse response) {
-                        dismissLoadingDialog();
-                        tasks[position].setTamamlandi(menu.getViewType()==0);
-                        taskListAdapter.setTasks(tasks);
-                        taskListAdapter.notifyDataSetChanged();
-                        swipeMenuListView.performClick();
-                    }
+                        @Override
+                        public void onFailure(int errorId, String error) {
+                            dismissLoadingDialog();
+                            Toast.makeText(TaskController.this, "İstek gerçekleşmedi !!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    // false : close the menu; true : not close the menu
+                    return false;
+                }
+            });
 
-                    @Override
-                    public void onFailure(int errorId, String error) {
-                        dismissLoadingDialog();
-                        Toast.makeText(TaskController.this, "İstek gerçekleşmedi !!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                // false : close the menu; true : not close the menu
-                return false;
-            }
-        });
+            swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+            swipeMenuListView.setCloseInterpolator(new AccelerateDecelerateInterpolator());
+            swipeMenuListView.setOpenInterpolator(new AccelerateDecelerateInterpolator());
+        }
 
-        swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
 
         taskListAdapter.setTasks(tasks);
-
         swipeMenuListView.setAdapter(taskListAdapter);
 
-        swipeMenuListView.setCloseInterpolator(new AccelerateDecelerateInterpolator());
-        swipeMenuListView.setOpenInterpolator(new AccelerateDecelerateInterpolator());
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent data = new Intent();
+        setResult(RESULT_OK, data);
+        finish();
     }
 }

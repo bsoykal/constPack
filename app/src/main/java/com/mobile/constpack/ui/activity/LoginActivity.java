@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.mobile.constpack.R;
 import com.mobile.constpack.base.ConstPack;
-import com.mobile.constpack.helpers.StringUtils;
+import com.mobile.constpack.utils.StringUtils;
 import com.mobile.constpack.network.BaseCallback;
 import com.mobile.constpack.network.RestManager;
 import com.mobile.constpack.network.request.LoginRequest;

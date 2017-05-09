@@ -1,4 +1,4 @@
-package com.mobile.constpack.helpers;
+package com.mobile.constpack.utils;
 
 /**
  * Created by bsoykal on 27/12/2016.

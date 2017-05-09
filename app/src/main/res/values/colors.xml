@@ -28,4 +28,7 @@
     <color name="job_done">#e5fdf6</color>
     <color name="job_late">#ffacad</color>
 
+    <color name="black_partial_transparent">#60181818</color>
+
+
 </resources>

@@ -1,31 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
    >
 
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/appimg_row"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:src="@drawable/constructor"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:padding="15dp"/>
+        android:layout_marginRight="30dp"
+        >
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/apptxt_row"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Projeler"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:textColor="@color/blue300"
-        android:textSize="27sp"
-        android:textAllCaps="true"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/appimg_row"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                tools:src="@drawable/constructor"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:padding="5dp"
+                android:layout_toLeftOf="@+id/apptxt_row"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/apptxt_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Projeler"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/blue300"
+                android:textSize="27sp"
+                android:textAllCaps="true"
+                />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/appimg_row2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                tools:src="@drawable/constructor"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:layout_toRightOf="@+id/apptxt_row"
+                />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
 
 </RelativeLayout>

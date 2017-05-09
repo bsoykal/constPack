@@ -20,6 +20,9 @@ public class HomeListRowHolder extends RelativeLayout {
     @ViewById(R.id.appimg_row)
     AppCompatImageView appimg_row;
 
+    @ViewById(R.id.appimg_row2)
+    AppCompatImageView appimg_row2;
+
     @ViewById(R.id.apptxt_row)
     AppCompatTextView apptxt_row;
 
@@ -29,6 +32,7 @@ public class HomeListRowHolder extends RelativeLayout {
 
     public void bind(int drawable,String text) {
         appimg_row.setImageResource(drawable);
+        appimg_row2.setImageResource(drawable);
         apptxt_row.setText(text);
     }
 }

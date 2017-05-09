@@ -42,7 +42,7 @@ public interface RestCalls {
     Call<MahalsResponse> requestMahals(@Path("productId") int productId);
 
     @GET("Task/{locusId}")
-    Call<TasksResponse> requestTasks(@Path("locusId") int locusId);
+    Call<TasksResponse> requestTasks(@Path("locusId") String locusId);
 
     @POST("Task")
     Call<BaseResponse> requestUpdateTask(@Body UpdateTaskRequest updateTaskRequest);

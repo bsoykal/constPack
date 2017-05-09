@@ -2,7 +2,9 @@ package com.mobile.constpack.ui.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mobile.constpack.R;
+import com.mobile.constpack.helpers.Constants;
 import com.mobile.constpack.ui.fragment.HomeFragment;
 import com.mobile.constpack.ui.fragment.HomeFragment_;
 import com.mobile.constpack.ui.fragment.ProfileFragment;
@@ -19,6 +22,7 @@ import com.mobile.constpack.ui.fragment.QRCodeFragment;
 import com.mobile.constpack.ui.fragment.QRCodeFragment_;
 
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 
 /**
@@ -94,7 +98,9 @@ public class DashBoardController extends BaseController {
 
                 selectedTabPosition = tab.getPosition();
                 switch (selectedTabPosition){
-                    case 0 : addFragmentToStack(qrCodeFragment,true);
+                    case 0 :
+                        qrCodeFragment.setTabLayout(tabLayout);
+                        addFragmentToStack(qrCodeFragment,true);
                         animateViewVisibility(qr_selected,View.VISIBLE);
                         animateViewVisibility(home_selected,View.INVISIBLE);
                         animateViewVisibility(constructor_selected,View.INVISIBLE);
@@ -159,5 +165,11 @@ public class DashBoardController extends BaseController {
         }
     }
 
+    @OnActivityResult(Constants.FINISH_FRAGMENT_CODE)
+    void onResult(int resultCode, Intent data) {
+        if(resultCode == Activity.RESULT_OK){
+            tabLayout.getTabAt(1).select();
+        }
+    }
 
 }
