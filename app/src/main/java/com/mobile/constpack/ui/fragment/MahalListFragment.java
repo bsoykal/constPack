@@ -65,7 +65,7 @@ public class MahalListFragment extends BaseFragment {
         RestManager.getInstance().requestTasks(""+mahalListAdapter.getItem(position).getMahalId()).enqueue(new BaseCallback<TasksResponse>(getActivity()) {
             @Override
             public void onSuccess(TasksResponse response) {
-                TaskController_.intent(getBaseController()).tasks(response.getTasks()).isEditable(false).start();
+                TaskController_.intent(getBaseController()).tasksResponse(response).isEditable(false).start();
             }
 
             @Override

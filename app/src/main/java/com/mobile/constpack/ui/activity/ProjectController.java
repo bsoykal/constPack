@@ -1,7 +1,7 @@
 package com.mobile.constpack.ui.activity;
 
 import com.mobile.constpack.R;
-import com.mobile.constpack.network.domain.Project;
+import com.mobile.constpack.network.response.ProjectsResponse;
 import com.mobile.constpack.ui.fragment.ProjectListFragment_;
 
 import org.androidannotations.annotations.EActivity;
@@ -18,11 +18,11 @@ public class ProjectController extends BaseController {
 
     @Getter
     @Extra
-    Project[] projects;
+    ProjectsResponse projectsResponse;
 
     @Override
     public void createViews() {
-        if(projects.length==1){
+        if(projectsResponse.getProjects().length==1){
             //TODO start PROJECT_PAGE_FRAGMENT
         }else{
             addFragmentToStack(ProjectListFragment_.builder().build(),true);
