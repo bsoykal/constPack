@@ -3,8 +3,6 @@ package com.mobile.constpack.network.domain;
 import org.parceler.Parcel;
 import org.parceler.ParcelConstructor;
 
-import java.io.Serializable;
-
 import lombok.Data;
 
 /**
@@ -13,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Parcel
-public class Project implements Serializable{
+public class Project{
 
     int projeId;
     String projeAdi;

@@ -43,7 +43,7 @@ public class ProjectListFragment extends BaseFragment {
     public void initViews() {
         initActionBar();
 
-        projectListAdapter.setProjects(((ProjectController)getBaseController()).getProjects());
+        projectListAdapter.setProjects(((ProjectController)getBaseController()).getProjectsResponse().getProjects());
         listView.setAdapter(projectListAdapter);
     }
 

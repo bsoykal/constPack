@@ -15,9 +15,9 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.mobile.constpack.R;
 import com.mobile.constpack.network.BaseCallback;
 import com.mobile.constpack.network.RestManager;
-import com.mobile.constpack.network.domain.Task;
 import com.mobile.constpack.network.request.UpdateTaskRequest;
 import com.mobile.constpack.network.response.BaseResponse;
+import com.mobile.constpack.network.response.TasksResponse;
 import com.mobile.constpack.ui.adapters.TaskListAdapter;
 
 import org.androidannotations.annotations.AfterViews;
@@ -37,7 +37,7 @@ public class TaskController extends BaseActivity {
 
     @Getter
     @Extra
-    Task[] tasks;
+    TasksResponse tasksResponse;
 
     @Getter
     @Extra
@@ -95,12 +95,12 @@ public class TaskController extends BaseActivity {
                 @Override
                 public boolean onMenuItemClick(final int position, final SwipeMenu menu, int index) {
                     showLoadingDialog();
-                    RestManager.getInstance().requestUpdateTask(new UpdateTaskRequest(tasks[position].getId(),menu.getViewType()==0)).enqueue(new BaseCallback<BaseResponse>(TaskController.this) {
+                    RestManager.getInstance().requestUpdateTask(new UpdateTaskRequest(tasksResponse.getTasks()[position].getId(),menu.getViewType()==0)).enqueue(new BaseCallback<BaseResponse>(TaskController.this) {
                         @Override
                         public void onSuccess(BaseResponse response) {
                             dismissLoadingDialog();
-                            tasks[position].setTamamlandi(menu.getViewType()==0);
-                            taskListAdapter.setTasks(tasks);
+                            tasksResponse.getTasks()[position].setTamamlandi(menu.getViewType()==0);
+                            taskListAdapter.setTasks(tasksResponse.getTasks());
                             taskListAdapter.notifyDataSetChanged();
                             swipeMenuListView.performClick();
                         }
@@ -122,7 +122,7 @@ public class TaskController extends BaseActivity {
         }
 
 
-        taskListAdapter.setTasks(tasks);
+        taskListAdapter.setTasks(tasksResponse.getTasks());
         swipeMenuListView.setAdapter(taskListAdapter);
 
 

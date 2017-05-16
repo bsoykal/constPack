@@ -168,7 +168,7 @@ public class QRCodeFragment extends BaseFragment implements Detector.Processor<B
             @Override
             public void onSuccess(TasksResponse response) {
                 getBaseController().dismissLoadingDialog();
-                TaskController_.intent(getActivity()).tasks(response.getTasks()).isEditable(true).startForResult(Constants.FINISH_FRAGMENT_CODE);
+                TaskController_.intent(getActivity()).tasksResponse(response).isEditable(true).startForResult(Constants.FINISH_FRAGMENT_CODE);
             }
 
             @Override

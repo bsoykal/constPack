@@ -45,7 +45,7 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onSuccess(ProjectsResponse response) {
                         getBaseController().dismissLoadingDialog();
-                        ProjectController_.intent(getBaseController()).projects(response.getProjects()).start();
+                        ProjectController_.intent(getBaseController()).projectsResponse(response).start();
                     }
 
                     @Override
